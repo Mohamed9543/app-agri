@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  email        String    @unique
+  name         String
+  passwordHash String?
+  googleId     String?
+  createdAt    DateTime  @default(now())
+  stations     Station[]
+
+  @@index([googleId])
+}
+
+model Station {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  owner     User       @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId   String     @db.ObjectId
+  parcelles Parcelle[]
+  createdAt DateTime   @default(now())
+}
+
+model Parcelle {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  station   Station  @relation(fields: [stationId], references: [id], onDelete: Cascade)
+  stationId String   @db.ObjectId
+  lignes    Ligne[]
+  createdAt DateTime @default(now())
+}
+
+model Ligne {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  numero     Int
+  status     String   @default("en_cours") // en_cours | terminee
+  parcelle   Parcelle @relation(fields: [parcelleId], references: [id], onDelete: Cascade)
+  parcelleId String   @db.ObjectId
+  valeurs    Valeur[]
+  createdAt  DateTime @default(now())
+}
+
+model Valeur {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  valeur    Float
+  ordre     Int
+  ligne     Ligne    @relation(fields: [ligneId], references: [id], onDelete: Cascade)
+  ligneId   String   @db.ObjectId
+  createdAt DateTime @default(now())
+}

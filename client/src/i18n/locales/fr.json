@@ -1,0 +1,91 @@
+{
+  "app": {
+    "name": "AgriCollecte",
+    "loading": "Chargement..."
+  },
+  "nav": {
+    "logout": "Déconnexion"
+  },
+  "auth": {
+    "loginTitle": "Connectez-vous à votre compte",
+    "registerTitle": "Créer un nouveau compte",
+    "fullName": "Nom complet",
+    "email": "Email",
+    "password": "Mot de passe",
+    "passwordMin": "Mot de passe (6 caractères min.)",
+    "loginButton": "Se connecter",
+    "loggingIn": "Connexion...",
+    "registerButton": "Créer mon compte",
+    "registering": "Création...",
+    "or": "ou",
+    "noAccount": "Pas de compte ?",
+    "createAccount": "Créer un compte",
+    "hasAccount": "Déjà un compte ?",
+    "googleNotConfigured": "Connexion Google non configurée (VITE_GOOGLE_CLIENT_ID manquant).",
+    "googleContinue": "Continuer avec Google"
+  },
+  "stations": {
+    "title": "Mes stations",
+    "newPlaceholder": "Nom de la nouvelle station",
+    "add": "Ajouter",
+    "emptyNameError": "Entrez un nom de station avant d'ajouter.",
+    "empty": "Aucune station pour le moment. Créez-en une ci-dessus.",
+    "parcelleCount": "{{count}} parcelle",
+    "parcelleCount_other": "{{count}} parcelles",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer cette station et toutes ses parcelles/données ?"
+  },
+  "stationDetail": {
+    "backToStations": "← Toutes les stations",
+    "notFound": "Station introuvable",
+    "addParcelles": "+ Ajouter des parcelles",
+    "countLabel": "Nombre de parcelles à ajouter",
+    "next": "Suivant",
+    "cancel": "Annuler",
+    "nameEach": "Donnez un nom à chaque parcelle :",
+    "save": "Enregistrer",
+    "empty": "Aucune parcelle. Ajoutez-en pour commencer le travail.",
+    "ligneCount": "{{count}} ligne",
+    "ligneCount_other": "{{count}} lignes",
+    "delete": "Supprimer",
+    "confirmDeleteParcelle": "Supprimer cette parcelle et toutes ses lignes ?",
+    "startWork": "Commencer le travail",
+    "viewTable": "Voir le tableau",
+    "defaultParcelleName": "Parcelle {{n}}"
+  },
+  "work": {
+    "back": "← Retour",
+    "notFound": "Parcelle introuvable",
+    "lignesFinished": "{{count}} ligne terminée",
+    "lignesFinished_other": "{{count}} lignes terminées",
+    "addLigne": "+ Ajouter une ligne",
+    "ligneTitle": "Ligne {{n}}",
+    "finishAndView": "Terminer et voir le tableau",
+    "valueCount": "{{count}} valeur",
+    "valueCount_other": "{{count}} valeurs",
+    "placeholder": "Entrez une valeur numérique",
+    "cancel": "Annuler",
+    "retour": "Retour",
+    "next": "Suivant",
+    "stop": "Stop",
+    "confirmCancelLigne": "Annuler cette ligne et perdre ses valeurs ?"
+  },
+  "table": {
+    "back": "← Retour",
+    "notFound": "Parcelle introuvable",
+    "title": "{{name}} — Tableau des données",
+    "download": "⬇ Télécharger Excel",
+    "empty": "Aucune donnée pour cette parcelle.",
+    "colLigne": "Ligne",
+    "colNumero": "N° Valeur",
+    "colValeur": "Valeur",
+    "colActions": "Actions",
+    "statusDone": "Terminée",
+    "statusOngoing": "En cours",
+    "deleteValue": "Supprimer valeur",
+    "deleteLigne": "Supprimer ligne",
+    "confirmDeleteLigne": "Supprimer cette ligne et toutes ses valeurs ?",
+    "confirmDeleteValue": "Supprimer cette valeur ?",
+    "sheetName": "Données"
+  }
+}
