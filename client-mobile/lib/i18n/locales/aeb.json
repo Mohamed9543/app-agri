@@ -1,0 +1,91 @@
+{
+  "app": {
+    "name": "AgriCollecte",
+    "loading": "قاعد يتحمّل..."
+  },
+  "nav": {
+    "logout": "خروج"
+  },
+  "auth": {
+    "loginTitle": "دخّل للحساب متاعك",
+    "registerTitle": "أعمل حساب جديد",
+    "fullName": "الاسم الكامل",
+    "email": "الإيمايل",
+    "password": "كلمة السر",
+    "passwordMin": "كلمة السر (6 حروف على الأقل)",
+    "loginButton": "دخول",
+    "loggingIn": "قاعد يدخل...",
+    "registerButton": "أعمل الحساب متاعي",
+    "registering": "قاعد يتعمل...",
+    "or": "ولا",
+    "noAccount": "ما عندكش حساب؟",
+    "createAccount": "أعمل حساب",
+    "hasAccount": "عندك حساب من قبل؟",
+    "googleNotConfigured": "الدخول بـ Google موش مفعّل (VITE_GOOGLE_CLIENT_ID ناقص).",
+    "googleContinue": "كمّل بـ Google"
+  },
+  "stations": {
+    "title": "المحطات متاعي",
+    "newPlaceholder": "اسم المحطة الجديدة",
+    "add": "زيد",
+    "emptyNameError": "دخّل اسم المحطة قبل ما تزيد.",
+    "empty": "ما فماش محطات لتوا. أعمل وحدة فوق.",
+    "parcelleCount": "قطعة وحدة",
+    "parcelleCount_other": "{{count}} قطع",
+    "delete": "امسح",
+    "confirmDelete": "تحب تمسح هاذي المحطة وكل القطع والمعطيات متاعها؟"
+  },
+  "stationDetail": {
+    "backToStations": "→ كل المحطات",
+    "notFound": "المحطة ماهيش موجودة",
+    "addParcelles": "+ زيد قطع",
+    "countLabel": "قداش قطعة تحب تزيد",
+    "next": "التالي",
+    "cancel": "إلغاء",
+    "nameEach": "عطي اسم لكل قطعة:",
+    "save": "احفظ",
+    "empty": "ما فماش قطع لتوا. زيد وحدة باش تبدا الخدمة.",
+    "ligneCount": "سطر وحد",
+    "ligneCount_other": "{{count}} سطور",
+    "delete": "امسح",
+    "confirmDeleteParcelle": "تحب تمسح هاذي القطعة وكل السطور متاعها؟",
+    "startWork": "ابدا الخدمة",
+    "viewTable": "شوف الجدول",
+    "defaultParcelleName": "القطعة {{n}}"
+  },
+  "work": {
+    "back": "→ لوّل",
+    "notFound": "القطعة ماهيش موجودة",
+    "lignesFinished": "سطر وحد كمّل",
+    "lignesFinished_other": "{{count}} سطور كمّلوا",
+    "addLigne": "+ زيد سطر",
+    "ligneTitle": "السطر {{n}}",
+    "finishAndView": "كمّل وشوف الجدول",
+    "valueCount": "قيمة وحدة",
+    "valueCount_other": "{{count}} قيم",
+    "placeholder": "دخّل رقم",
+    "cancel": "إلغاء",
+    "retour": "ارجع",
+    "next": "التالي",
+    "stop": "أوقف",
+    "confirmCancelLigne": "تحب تلغي هاذا السطر وتخسر القيم متاعو؟"
+  },
+  "table": {
+    "back": "→ لوّل",
+    "notFound": "القطعة ماهيش موجودة",
+    "title": "{{name}} — جدول المعطيات",
+    "download": "⬇ حمّل ملف Excel",
+    "empty": "ما فماش معطيات لهاذي القطعة.",
+    "colLigne": "السطر",
+    "colNumero": "رقم القيمة",
+    "colValeur": "القيمة",
+    "colActions": "أعمال",
+    "statusDone": "كمّل",
+    "statusOngoing": "قاعدة",
+    "deleteValue": "امسح القيمة",
+    "deleteLigne": "امسح السطر",
+    "confirmDeleteLigne": "تحب تمسح هاذا السطر وكل القيم متاعو؟",
+    "confirmDeleteValue": "تحب تمسح هاذي القيمة؟",
+    "sheetName": "المعطيات"
+  }
+}

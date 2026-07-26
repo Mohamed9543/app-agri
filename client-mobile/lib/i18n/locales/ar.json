@@ -1,0 +1,91 @@
+{
+  "app": {
+    "name": "AgriCollecte",
+    "loading": "جاري التحميل..."
+  },
+  "nav": {
+    "logout": "تسجيل الخروج"
+  },
+  "auth": {
+    "loginTitle": "سجّل الدخول إلى حسابك",
+    "registerTitle": "إنشاء حساب جديد",
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "passwordMin": "كلمة المرور (6 أحرف على الأقل)",
+    "loginButton": "تسجيل الدخول",
+    "loggingIn": "جارٍ تسجيل الدخول...",
+    "registerButton": "إنشاء الحساب",
+    "registering": "جارٍ الإنشاء...",
+    "or": "أو",
+    "noAccount": "ليس لديك حساب؟",
+    "createAccount": "إنشاء حساب",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "googleNotConfigured": "تسجيل الدخول عبر Google غير مُفعّل (VITE_GOOGLE_CLIENT_ID غير موجود).",
+    "googleContinue": "المتابعة باستخدام Google"
+  },
+  "stations": {
+    "title": "محطاتي",
+    "newPlaceholder": "اسم المحطة الجديدة",
+    "add": "إضافة",
+    "emptyNameError": "أدخل اسم المحطة قبل الإضافة.",
+    "empty": "لا توجد محطات حتى الآن. أنشئ واحدة أعلاه.",
+    "parcelleCount": "قطعة واحدة",
+    "parcelleCount_other": "{{count}} قطعة",
+    "delete": "حذف",
+    "confirmDelete": "هل تريد حذف هذه المحطة وجميع قطعها وبياناتها؟"
+  },
+  "stationDetail": {
+    "backToStations": "→ جميع المحطات",
+    "notFound": "المحطة غير موجودة",
+    "addParcelles": "+ إضافة قطع",
+    "countLabel": "عدد القطع المراد إضافتها",
+    "next": "التالي",
+    "cancel": "إلغاء",
+    "nameEach": "أدخل اسمًا لكل قطعة:",
+    "save": "حفظ",
+    "empty": "لا توجد قطع بعد. أضف قطعة لبدء العمل.",
+    "ligneCount": "صف واحد",
+    "ligneCount_other": "{{count}} صف",
+    "delete": "حذف",
+    "confirmDeleteParcelle": "هل تريد حذف هذه القطعة وجميع صفوفها؟",
+    "startWork": "بدء العمل",
+    "viewTable": "عرض الجدول",
+    "defaultParcelleName": "القطعة {{n}}"
+  },
+  "work": {
+    "back": "→ رجوع",
+    "notFound": "القطعة غير موجودة",
+    "lignesFinished": "صف واحد منتهٍ",
+    "lignesFinished_other": "{{count}} صف منتهٍ",
+    "addLigne": "+ إضافة صف",
+    "ligneTitle": "الصف {{n}}",
+    "finishAndView": "إنهاء وعرض الجدول",
+    "valueCount": "قيمة واحدة",
+    "valueCount_other": "{{count}} قيمة",
+    "placeholder": "أدخل قيمة رقمية",
+    "cancel": "إلغاء",
+    "retour": "تراجع",
+    "next": "التالي",
+    "stop": "توقف",
+    "confirmCancelLigne": "هل تريد إلغاء هذا الصف وفقدان قيمه؟"
+  },
+  "table": {
+    "back": "→ رجوع",
+    "notFound": "القطعة غير موجودة",
+    "title": "{{name}} — جدول البيانات",
+    "download": "⬇ تحميل ملف Excel",
+    "empty": "لا توجد بيانات لهذه القطعة.",
+    "colLigne": "الصف",
+    "colNumero": "رقم القيمة",
+    "colValeur": "القيمة",
+    "colActions": "إجراءات",
+    "statusDone": "منتهٍ",
+    "statusOngoing": "جارٍ",
+    "deleteValue": "حذف القيمة",
+    "deleteLigne": "حذف الصف",
+    "confirmDeleteLigne": "هل تريد حذف هذا الصف وجميع قيمه؟",
+    "confirmDeleteValue": "هل تريد حذف هذه القيمة؟",
+    "sheetName": "البيانات"
+  }
+}
