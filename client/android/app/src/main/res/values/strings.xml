@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AgriCollecte</string>
+    <string name="title_activity_main">AgriCollecte</string>
+    <string name="package_name">com.agricollecte.app</string>
+    <string name="custom_url_scheme">com.agricollecte.app</string>
+</resources>
