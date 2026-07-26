@@ -4,3 +4,6 @@ node_modules
 dist
 dev.db
 dev.db-journal
+
+# Android signing keystore — never commit, irreplaceable for Play Store updates
+keystore-backup/

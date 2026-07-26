@@ -1,8 +1,7 @@
+import { Platform } from "react-native";
 import * as XLSX from "xlsx";
-import { File, Paths } from "expo-file-system";
-import * as Sharing from "expo-sharing";
 
-export async function exportLignesToXlsx({ lignes, parcelleName, sheetName, columns }) {
+function buildWorkbook({ lignes, sheetName, columns }) {
   const rows = lignes.flatMap((l) =>
     l.valeurs.length ? l.valeurs.map((v, i) => [l.numero, i + 1, v.valeur]) : [[l.numero, "", ""]]
   );
@@ -10,9 +9,22 @@ export async function exportLignesToXlsx({ lignes, parcelleName, sheetName, colu
   ws["!cols"] = [{ wch: 8 }, { wch: 10 }, { wch: 10 }];
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, sheetName);
-  const base64 = XLSX.write(wb, { type: "base64", bookType: "xlsx" });
+  return wb;
+}
 
+export async function exportLignesToXlsx({ lignes, parcelleName, sheetName, columns }) {
+  const wb = buildWorkbook({ lignes, sheetName, columns });
   const safeName = (parcelleName || "parcelle").replace(/[^a-z0-9]+/gi, "_");
+
+  if (Platform.OS === "web") {
+    XLSX.writeFile(wb, `${safeName}.xlsx`, { bookType: "xlsx" });
+    return null;
+  }
+
+  const { File, Paths } = await import("expo-file-system");
+  const Sharing = await import("expo-sharing");
+
+  const base64 = XLSX.write(wb, { type: "base64", bookType: "xlsx" });
   const file = new File(Paths.cache, `${safeName}.xlsx`);
   if (file.exists) file.delete();
   file.create();
