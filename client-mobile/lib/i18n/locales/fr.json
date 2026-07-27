@@ -52,6 +52,7 @@
     "startWork": "Commencer le travail",
     "viewTable": "Voir le tableau",
     "history": "Historique",
+    "workDate": "Date de travail",
     "defaultParcelleName": "Parcelle {{n}}"
   },
   "dateModal": {

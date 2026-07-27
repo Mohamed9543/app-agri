@@ -52,6 +52,7 @@
     "startWork": "Start working",
     "viewTable": "View table",
     "history": "History",
+    "workDate": "Work date",
     "defaultParcelleName": "Plot {{n}}"
   },
   "dateModal": {

@@ -52,6 +52,7 @@
     "startWork": "بدء العمل",
     "viewTable": "عرض الجدول",
     "history": "السجل",
+    "workDate": "تاريخ العمل",
     "defaultParcelleName": "القطعة {{n}}"
   },
   "dateModal": {

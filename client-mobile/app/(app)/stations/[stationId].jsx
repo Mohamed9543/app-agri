@@ -5,9 +5,10 @@ import { useTranslation } from "react-i18next";
 import { api } from "../../../lib/api";
 import { confirmAsync } from "../../../lib/confirm";
 import DatePickerModal from "../../../components/DatePickerModal";
+import { todayISO, formatDisplayDate } from "../../../lib/date";
 
 export default function StationDetail() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { stationId } = useLocalSearchParams();
   const router = useRouter();
   const [station, setStation] = useState(null);
@@ -19,7 +20,11 @@ export default function StationDetail() {
   const [count, setCount] = useState("");
   const [names, setNames] = useState([]);
   const [saving, setSaving] = useState(false);
-  const [workParcelleId, setWorkParcelleId] = useState(null);
+
+  // Each parcelle keeps its own working date, visible and editable right on
+  // its card, defaulting to today. "Commencer le travail" uses it directly.
+  const [dates, setDates] = useState({});
+  const [editingDateFor, setEditingDateFor] = useState(null);
 
   const load = useCallback(() => {
     setLoading(true);
@@ -28,6 +33,13 @@ export default function StationDetail() {
       .then(({ data }) => {
         setStation(data.station);
         setParcelles(data.parcelles);
+        setDates((prev) => {
+          const next = { ...prev };
+          for (const p of data.parcelles) {
+            if (!next[p.id]) next[p.id] = todayISO();
+          }
+          return next;
+        });
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -163,15 +175,24 @@ export default function StationDetail() {
                   <Text className="text-sm text-red-500">{t("stationDetail.delete")}</Text>
                 </Pressable>
               </View>
-              <View className="mt-3 flex-row gap-2">
-                <Pressable
-                  onPress={() => setWorkParcelleId(p.id)}
-                  className="flex-1 rounded-md bg-brand-600 px-3 py-2.5"
-                >
-                  <Text className="text-center text-sm font-medium text-white">
-                    {t("stationDetail.startWork")}
-                  </Text>
-                </Pressable>
+              <Pressable
+                onPress={() => setEditingDateFor(p.id)}
+                className="mt-3 flex-row items-center justify-between rounded-md bg-brand-50 px-3 py-2"
+              >
+                <Text className="text-xs text-brand-700">{t("stationDetail.workDate")}</Text>
+                <Text className="text-sm font-medium text-brand-800">
+                  📅 {formatDisplayDate(dates[p.id] || todayISO(), i18n.language)}
+                </Text>
+              </Pressable>
+
+              <View className="mt-2 flex-row gap-2">
+                <Link href={`/parcelles/${p.id}/travail?date=${dates[p.id] || todayISO()}`} asChild>
+                  <Pressable className="flex-1 rounded-md bg-brand-600 px-3 py-2.5">
+                    <Text className="text-center text-sm font-medium text-white">
+                      {t("stationDetail.startWork")}
+                    </Text>
+                  </Pressable>
+                </Link>
                 <Link href={`/parcelles/${p.id}/historique`} asChild>
                   <Pressable className="flex-1 rounded-md bg-slate-100 px-3 py-2.5">
                     <Text className="text-center text-sm font-medium text-slate-700">
@@ -186,12 +207,11 @@ export default function StationDetail() {
       )}
 
       <DatePickerModal
-        visible={!!workParcelleId}
-        onCancel={() => setWorkParcelleId(null)}
+        visible={!!editingDateFor}
+        onCancel={() => setEditingDateFor(null)}
         onConfirm={(date) => {
-          const id = workParcelleId;
-          setWorkParcelleId(null);
-          router.push(`/parcelles/${id}/travail?date=${date}`);
+          setDates((prev) => ({ ...prev, [editingDateFor]: date }));
+          setEditingDateFor(null);
         }}
       />
     </ScrollView>
