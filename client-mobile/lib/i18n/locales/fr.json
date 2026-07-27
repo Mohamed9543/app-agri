@@ -58,8 +58,7 @@
   "dateModal": {
     "title": "Quelle date pour cette session ?",
     "today": "Aujourd'hui",
-    "dateLabel": "Date (AAAA-MM-JJ)",
-    "invalid": "Format invalide, utilisez AAAA-MM-JJ",
+    "weekdaysShort": "Lun,Mar,Mer,Jeu,Ven,Sam,Dim",
     "cancel": "Annuler",
     "continue": "Continuer"
   },

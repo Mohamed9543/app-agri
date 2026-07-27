@@ -31,3 +31,35 @@ export function formatDisplayDate(isoDate, locale = "fr") {
     return isoDate;
   }
 }
+
+// Same locale-safety concern as formatDisplayDate, plus aeb has no ICU data
+// at all, so it always falls back to the numeric "MM/YYYY" form.
+export function monthYearLabel(year, month, locale = "fr") {
+  const d = new Date(Date.UTC(year, month, 1));
+  try {
+    return d.toLocaleDateString(locale, { year: "numeric", month: "long", timeZone: "UTC" });
+  } catch {
+    return `${String(month + 1).padStart(2, "0")}/${year}`;
+  }
+}
+
+// Monday-first 6x7 grid (nulls for the leading/trailing blanks) of a given
+// month, entirely in UTC so it can't drift a day depending on the viewer's
+// timezone.
+export function getMonthGrid(year, month) {
+  const firstOfMonth = new Date(Date.UTC(year, month, 1));
+  const startWeekday = (firstOfMonth.getUTCDay() + 6) % 7; // Monday = 0
+  const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+
+  const cells = [];
+  for (let i = 0; i < startWeekday; i++) cells.push(null);
+  for (let day = 1; day <= daysInMonth; day++) {
+    const iso = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    cells.push({ day, iso });
+  }
+  while (cells.length % 7 !== 0) cells.push(null);
+
+  const weeks = [];
+  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+  return weeks;
+}
