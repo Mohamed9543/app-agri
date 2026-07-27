@@ -51,11 +51,32 @@
     "confirmDeleteParcelle": "Supprimer cette parcelle et toutes ses lignes ?",
     "startWork": "Commencer le travail",
     "viewTable": "Voir le tableau",
+    "history": "Historique",
     "defaultParcelleName": "Parcelle {{n}}"
+  },
+  "dateModal": {
+    "title": "Quelle date pour cette session ?",
+    "today": "Aujourd'hui",
+    "dateLabel": "Date (AAAA-MM-JJ)",
+    "invalid": "Format invalide, utilisez AAAA-MM-JJ",
+    "cancel": "Annuler",
+    "continue": "Continuer"
+  },
+  "history": {
+    "title": "Historique — {{name}}",
+    "back": "← Retour",
+    "empty": "Aucune session enregistrée pour cette parcelle.",
+    "undated": "Sans date (ancien)",
+    "ongoing": "En cours",
+    "ligneCount": "{{count}} ligne",
+    "ligneCount_other": "{{count}} lignes",
+    "valeurCount": "{{count}} valeur",
+    "valeurCount_other": "{{count}} valeurs"
   },
   "work": {
     "back": "← Retour",
     "notFound": "Parcelle introuvable",
+    "sessionDate": "Session du {{date}}",
     "lignesFinished": "{{count}} ligne terminée",
     "lignesFinished_other": "{{count}} lignes terminées",
     "addLigne": "+ Ajouter une ligne",
@@ -73,7 +94,7 @@
   "table": {
     "back": "← Retour",
     "notFound": "Parcelle introuvable",
-    "title": "{{name}} — Tableau des données",
+    "title": "{{name}} — {{date}}",
     "download": "⬇ Télécharger Excel",
     "empty": "Aucune donnée pour cette parcelle.",
     "colLigne": "Ligne",

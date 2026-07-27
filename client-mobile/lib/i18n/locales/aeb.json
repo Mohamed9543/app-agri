@@ -51,11 +51,32 @@
     "confirmDeleteParcelle": "تحب تمسح هاذي القطعة وكل السطور متاعها؟",
     "startWork": "ابدا الخدمة",
     "viewTable": "شوف الجدول",
+    "history": "التاريخ",
     "defaultParcelleName": "القطعة {{n}}"
+  },
+  "dateModal": {
+    "title": "لأي نهار هاذي الجلسة؟",
+    "today": "اليوم",
+    "dateLabel": "التاريخ (سنة-شهر-نهار)",
+    "invalid": "الصيغة غالطة، استعمل سنة-شهر-نهار",
+    "cancel": "إلغاء",
+    "continue": "كمّل"
+  },
+  "history": {
+    "title": "التاريخ — {{name}}",
+    "back": "→ لوّل",
+    "empty": "ما فماش أي جلسة متسجلة لهاذي القطعة لتوا.",
+    "undated": "بلا تاريخ (قديم)",
+    "ongoing": "قاعدة",
+    "ligneCount": "سطر وحد",
+    "ligneCount_other": "{{count}} سطور",
+    "valeurCount": "قيمة وحدة",
+    "valeurCount_other": "{{count}} قيم"
   },
   "work": {
     "back": "→ لوّل",
     "notFound": "القطعة ماهيش موجودة",
+    "sessionDate": "جلسة نهار {{date}}",
     "lignesFinished": "سطر وحد كمّل",
     "lignesFinished_other": "{{count}} سطور كمّلوا",
     "addLigne": "+ زيد سطر",
@@ -73,7 +94,7 @@
   "table": {
     "back": "→ لوّل",
     "notFound": "القطعة ماهيش موجودة",
-    "title": "{{name}} — جدول المعطيات",
+    "title": "{{name}} — {{date}}",
     "download": "⬇ حمّل ملف Excel",
     "empty": "ما فماش معطيات لهاذي القطعة.",
     "colLigne": "السطر",

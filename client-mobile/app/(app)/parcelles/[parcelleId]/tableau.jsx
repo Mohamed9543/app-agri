@@ -5,11 +5,13 @@ import { useTranslation } from "react-i18next";
 import { api } from "../../../../lib/api";
 import { confirmAsync } from "../../../../lib/confirm";
 import { exportLignesToXlsx } from "../../../../lib/exportXlsx";
+import { formatDisplayDate } from "../../../../lib/date";
 
 export default function ParcelleTable() {
-  const { t } = useTranslation();
-  const { parcelleId } = useLocalSearchParams();
+  const { t, i18n } = useTranslation();
+  const { parcelleId, date } = useLocalSearchParams();
   const router = useRouter();
+  const dateLabel = date === "none" ? t("history.undated") : formatDisplayDate(date, i18n.language);
 
   const [parcelle, setParcelle] = useState(null);
   const [lignes, setLignes] = useState([]);
@@ -22,14 +24,14 @@ export default function ParcelleTable() {
   const load = useCallback(() => {
     setLoading(true);
     api
-      .get(`/parcelles/${parcelleId}`)
+      .get(`/parcelles/${parcelleId}`, { params: { date } })
       .then(({ data }) => {
         setParcelle(data.parcelle);
         setLignes(data.lignes);
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [parcelleId]);
+  }, [parcelleId, date]);
 
   useFocusEffect(load);
 
@@ -68,7 +70,7 @@ export default function ParcelleTable() {
     try {
       await exportLignesToXlsx({
         lignes,
-        parcelleName: parcelle?.name,
+        parcelleName: `${parcelle?.name || ""}_${date === "none" ? "sans_date" : date}`,
         sheetName: t("table.sheetName"),
         columns: [t("table.colLigne"), t("table.colNumero"), t("table.colValeur")],
       });
@@ -92,7 +94,7 @@ export default function ParcelleTable() {
 
       <View className="mb-4 flex-row flex-wrap items-center justify-between gap-2">
         <Text className="text-xl font-bold text-slate-800">
-          {t("table.title", { name: parcelle.name })}
+          {t("table.title", { name: parcelle.name, date: dateLabel })}
         </Text>
         <Pressable
           onPress={handleExport}

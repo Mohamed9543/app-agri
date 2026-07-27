@@ -4,10 +4,12 @@ import { Link, useFocusEffect, useLocalSearchParams, useRouter } from "expo-rout
 import { useTranslation } from "react-i18next";
 import { api } from "../../../../lib/api";
 import { confirmAsync } from "../../../../lib/confirm";
+import { todayISO, formatDisplayDate } from "../../../../lib/date";
 
 export default function ParcelleWork() {
-  const { t } = useTranslation();
-  const { parcelleId } = useLocalSearchParams();
+  const { t, i18n } = useTranslation();
+  const { parcelleId, date: dateParam } = useLocalSearchParams();
+  const date = dateParam || todayISO();
   const router = useRouter();
 
   const [parcelle, setParcelle] = useState(null);
@@ -21,16 +23,16 @@ export default function ParcelleWork() {
   const load = useCallback(() => {
     setLoading(true);
     api
-      .get(`/parcelles/${parcelleId}`)
+      .get(`/parcelles/${parcelleId}`, { params: { date } })
       .then(({ data }) => {
         setParcelle(data.parcelle);
         setLignes(data.lignes.filter((l) => l.status === "terminee"));
         const enCours = data.lignes.find((l) => l.status === "en_cours");
-        if (enCours) setActiveLigne(enCours);
+        setActiveLigne(enCours || null);
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [parcelleId]);
+  }, [parcelleId, date]);
 
   useFocusEffect(load);
 
@@ -38,7 +40,7 @@ export default function ParcelleWork() {
     setError("");
     setBusy(true);
     try {
-      const { data } = await api.post(`/parcelles/${parcelleId}/lignes`);
+      const { data } = await api.post(`/parcelles/${parcelleId}/lignes`, { date });
       setActiveLigne(data.ligne);
       setInputValue("");
     } catch (err) {
@@ -124,6 +126,7 @@ export default function ParcelleWork() {
         <Text className="text-sm text-brand-700">{t("work.back")}</Text>
       </Pressable>
       <Text className="mb-1 text-xl font-bold text-slate-800">{parcelle.name}</Text>
+      <Text className="text-sm text-slate-500">{t("work.sessionDate", { date: formatDisplayDate(date, i18n.language) })}</Text>
       <Text className="mb-4 text-sm text-slate-500">
         {t("work.lignesFinished", { count: lignes.length })}
       </Text>
@@ -157,7 +160,7 @@ export default function ParcelleWork() {
             />
           )}
 
-          <Link href={`/parcelles/${parcelleId}/tableau`} asChild>
+          <Link href={`/parcelles/${parcelleId}/tableau?date=${date}`} asChild>
             <Pressable className="w-full rounded-lg bg-slate-800 px-4 py-3.5">
               <Text className="text-center font-medium text-white">{t("work.finishAndView")}</Text>
             </Pressable>

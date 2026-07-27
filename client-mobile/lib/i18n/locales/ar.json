@@ -51,11 +51,32 @@
     "confirmDeleteParcelle": "هل تريد حذف هذه القطعة وجميع صفوفها؟",
     "startWork": "بدء العمل",
     "viewTable": "عرض الجدول",
+    "history": "السجل",
     "defaultParcelleName": "القطعة {{n}}"
+  },
+  "dateModal": {
+    "title": "لأي تاريخ هذه الجلسة؟",
+    "today": "اليوم",
+    "dateLabel": "التاريخ (سنة-شهر-يوم)",
+    "invalid": "صيغة غير صحيحة، استعمل سنة-شهر-يوم",
+    "cancel": "إلغاء",
+    "continue": "متابعة"
+  },
+  "history": {
+    "title": "السجل — {{name}}",
+    "back": "→ رجوع",
+    "empty": "لا توجد أي جلسة مسجلة لهذه القطعة بعد.",
+    "undated": "بدون تاريخ (قديم)",
+    "ongoing": "جارٍ",
+    "ligneCount": "صف واحد",
+    "ligneCount_other": "{{count}} صف",
+    "valeurCount": "قيمة واحدة",
+    "valeurCount_other": "{{count}} قيمة"
   },
   "work": {
     "back": "→ رجوع",
     "notFound": "القطعة غير موجودة",
+    "sessionDate": "جلسة يوم {{date}}",
     "lignesFinished": "صف واحد منتهٍ",
     "lignesFinished_other": "{{count}} صف منتهٍ",
     "addLigne": "+ إضافة صف",
@@ -73,7 +94,7 @@
   "table": {
     "back": "→ رجوع",
     "notFound": "القطعة غير موجودة",
-    "title": "{{name}} — جدول البيانات",
+    "title": "{{name}} — {{date}}",
     "download": "⬇ تحميل ملف Excel",
     "empty": "لا توجد بيانات لهذه القطعة.",
     "colLigne": "الصف",

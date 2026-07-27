@@ -4,6 +4,7 @@ import { Link, useFocusEffect, useLocalSearchParams, useRouter } from "expo-rout
 import { useTranslation } from "react-i18next";
 import { api } from "../../../lib/api";
 import { confirmAsync } from "../../../lib/confirm";
+import DatePickerModal from "../../../components/DatePickerModal";
 
 export default function StationDetail() {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ export default function StationDetail() {
   const [count, setCount] = useState("");
   const [names, setNames] = useState([]);
   const [saving, setSaving] = useState(false);
+  const [workParcelleId, setWorkParcelleId] = useState(null);
 
   const load = useCallback(() => {
     setLoading(true);
@@ -162,17 +164,18 @@ export default function StationDetail() {
                 </Pressable>
               </View>
               <View className="mt-3 flex-row gap-2">
-                <Link href={`/parcelles/${p.id}/travail`} asChild>
-                  <Pressable className="flex-1 rounded-md bg-brand-600 px-3 py-2.5">
-                    <Text className="text-center text-sm font-medium text-white">
-                      {t("stationDetail.startWork")}
-                    </Text>
-                  </Pressable>
-                </Link>
-                <Link href={`/parcelles/${p.id}/tableau`} asChild>
+                <Pressable
+                  onPress={() => setWorkParcelleId(p.id)}
+                  className="flex-1 rounded-md bg-brand-600 px-3 py-2.5"
+                >
+                  <Text className="text-center text-sm font-medium text-white">
+                    {t("stationDetail.startWork")}
+                  </Text>
+                </Pressable>
+                <Link href={`/parcelles/${p.id}/historique`} asChild>
                   <Pressable className="flex-1 rounded-md bg-slate-100 px-3 py-2.5">
                     <Text className="text-center text-sm font-medium text-slate-700">
-                      {t("stationDetail.viewTable")}
+                      {t("stationDetail.history")}
                     </Text>
                   </Pressable>
                 </Link>
@@ -181,6 +184,16 @@ export default function StationDetail() {
           )}
         />
       )}
+
+      <DatePickerModal
+        visible={!!workParcelleId}
+        onCancel={() => setWorkParcelleId(null)}
+        onConfirm={(date) => {
+          const id = workParcelleId;
+          setWorkParcelleId(null);
+          router.push(`/parcelles/${id}/travail?date=${date}`);
+        }}
+      />
     </ScrollView>
   );
 }

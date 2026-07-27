@@ -51,11 +51,32 @@
     "confirmDeleteParcelle": "Delete this plot and all its rows?",
     "startWork": "Start working",
     "viewTable": "View table",
+    "history": "History",
     "defaultParcelleName": "Plot {{n}}"
+  },
+  "dateModal": {
+    "title": "Which date is this session for?",
+    "today": "Today",
+    "dateLabel": "Date (YYYY-MM-DD)",
+    "invalid": "Invalid format, use YYYY-MM-DD",
+    "cancel": "Cancel",
+    "continue": "Continue"
+  },
+  "history": {
+    "title": "History — {{name}}",
+    "back": "← Back",
+    "empty": "No session recorded for this plot yet.",
+    "undated": "No date (legacy)",
+    "ongoing": "Ongoing",
+    "ligneCount": "{{count}} row",
+    "ligneCount_other": "{{count}} rows",
+    "valeurCount": "{{count}} value",
+    "valeurCount_other": "{{count}} values"
   },
   "work": {
     "back": "← Back",
     "notFound": "Plot not found",
+    "sessionDate": "Session of {{date}}",
     "lignesFinished": "{{count}} row finished",
     "lignesFinished_other": "{{count}} rows finished",
     "addLigne": "+ Add a row",
@@ -73,7 +94,7 @@
   "table": {
     "back": "← Back",
     "notFound": "Plot not found",
-    "title": "{{name}} — Data table",
+    "title": "{{name}} — {{date}}",
     "download": "⬇ Download Excel",
     "empty": "No data for this plot.",
     "colLigne": "Row",

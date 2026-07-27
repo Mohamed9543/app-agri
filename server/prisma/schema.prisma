@@ -41,10 +41,13 @@ model Ligne {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   numero     Int
   status     String   @default("en_cours") // en_cours | terminee
+  date       String? // YYYY-MM-DD; the day of work this ligne belongs to. Numero restarts per (parcelleId, date). Null = legacy data from before per-day tracking existed.
   parcelle   Parcelle @relation(fields: [parcelleId], references: [id], onDelete: Cascade)
   parcelleId String   @db.ObjectId
   valeurs    Valeur[]
   createdAt  DateTime @default(now())
+
+  @@index([parcelleId, date])
 }
 
 model Valeur {
