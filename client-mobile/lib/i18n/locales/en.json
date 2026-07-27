@@ -21,7 +21,7 @@
     "noAccount": "No account?",
     "createAccount": "Create an account",
     "hasAccount": "Already have an account?",
-    "googleNotConfigured": "Google sign-in not configured (missing VITE_GOOGLE_CLIENT_ID).",
+    "googleNotConfigured": "Google sign-in not configured (missing EXPO_PUBLIC_GOOGLE_CLIENT_ID).",
     "googleContinue": "Continue with Google"
   },
   "stations": {

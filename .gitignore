@@ -5,5 +5,10 @@ dist
 dev.db
 dev.db-journal
 
+# client-mobile/.env only holds EXPO_PUBLIC_* values, which Expo bakes into
+# the client bundle regardless (never actual secrets) — it must be tracked
+# so `eas build`'s upload (which also respects .gitignore) includes it.
+!client-mobile/.env
+
 # Android signing keystore — never commit, irreplaceable for Play Store updates
 keystore-backup/

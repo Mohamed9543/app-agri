@@ -21,7 +21,7 @@
     "noAccount": "Pas de compte ?",
     "createAccount": "Créer un compte",
     "hasAccount": "Déjà un compte ?",
-    "googleNotConfigured": "Connexion Google non configurée (VITE_GOOGLE_CLIENT_ID manquant).",
+    "googleNotConfigured": "Connexion Google non configurée (EXPO_PUBLIC_GOOGLE_CLIENT_ID manquant).",
     "googleContinue": "Continuer avec Google"
   },
   "stations": {

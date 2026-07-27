@@ -44,7 +44,7 @@ export default function GoogleButton({ onCredential }) {
       onPress={() => promptAsync()}
       className="flex-row items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2.5 disabled:opacity-60"
     >
-      <Text className="font-medium text-slate-700">{t("auth.continueWithGoogle") || "Google"}</Text>
+      <Text className="font-medium text-slate-700">{t("auth.googleContinue")}</Text>
     </Pressable>
   );
 }

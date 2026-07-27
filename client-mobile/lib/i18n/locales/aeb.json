@@ -21,7 +21,7 @@
     "noAccount": "ما عندكش حساب؟",
     "createAccount": "أعمل حساب",
     "hasAccount": "عندك حساب من قبل؟",
-    "googleNotConfigured": "الدخول بـ Google موش مفعّل (VITE_GOOGLE_CLIENT_ID ناقص).",
+    "googleNotConfigured": "الدخول بـ Google موش مفعّل (EXPO_PUBLIC_GOOGLE_CLIENT_ID ناقص).",
     "googleContinue": "كمّل بـ Google"
   },
   "stations": {

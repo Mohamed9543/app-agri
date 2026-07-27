@@ -21,7 +21,7 @@
     "noAccount": "ليس لديك حساب؟",
     "createAccount": "إنشاء حساب",
     "hasAccount": "لديك حساب بالفعل؟",
-    "googleNotConfigured": "تسجيل الدخول عبر Google غير مُفعّل (VITE_GOOGLE_CLIENT_ID غير موجود).",
+    "googleNotConfigured": "تسجيل الدخول عبر Google غير مُفعّل (EXPO_PUBLIC_GOOGLE_CLIENT_ID غير موجود).",
     "googleContinue": "المتابعة باستخدام Google"
   },
   "stations": {
