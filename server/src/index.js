@@ -9,6 +9,12 @@ import lignesRoutes from "./routes/lignes.js";
 import valeursRoutes from "./routes/valeurs.js";
 
 const app = express();
+// Render (and most PaaS hosts) sit behind a reverse proxy that sets
+// X-Forwarded-For. Without this, express-rate-limit's default key
+// generator refuses to trust that header and throws on every request,
+// producing a 500 on any rate-limited route (e.g. /auth/register) — only
+// reproducible behind the real proxy, never in local dev.
+app.set("trust proxy", 1);
 app.use(helmet());
 app.use(cors());
 app.use(express.json({ limit: "100kb" }));
