@@ -53,6 +53,9 @@
     "viewTable": "Voir le tableau",
     "history": "Historique",
     "workDate": "Date de travail",
+    "exportAll": "⬇ Exporter toutes les parcelles (Excel)",
+    "exporting": "Export en cours...",
+    "exportDateTitle": "Pour quelle date exporter ?",
     "defaultParcelleName": "Parcelle {{n}}"
   },
   "dateModal": {

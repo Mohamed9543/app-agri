@@ -8,7 +8,7 @@ function parseYearMonth(iso) {
   return { year: y, month: m - 1 };
 }
 
-export default function DatePickerModal({ visible, onCancel, onConfirm }) {
+export default function DatePickerModal({ visible, onCancel, onConfirm, title }) {
   const { t, i18n } = useTranslation();
   const today = todayISO();
   const [selected, setSelected] = useState(today);
@@ -47,7 +47,7 @@ export default function DatePickerModal({ visible, onCancel, onConfirm }) {
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onCancel}>
       <View className="flex-1 items-center justify-center bg-black/40 px-6">
         <View className="w-full max-w-sm rounded-xl bg-white p-5 shadow-lg">
-          <Text className="mb-3 text-lg font-bold text-slate-800">{t("dateModal.title")}</Text>
+          <Text className="mb-3 text-lg font-bold text-slate-800">{title || t("dateModal.title")}</Text>
 
           <View className="mb-3 flex-row items-center justify-between">
             <Pressable onPress={() => changeMonth(-1)} hitSlop={8} className="px-2 py-1">

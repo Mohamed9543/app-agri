@@ -53,6 +53,9 @@
     "viewTable": "عرض الجدول",
     "history": "السجل",
     "workDate": "تاريخ العمل",
+    "exportAll": "⬇ تصدير كل القطع (Excel)",
+    "exporting": "جارٍ التصدير...",
+    "exportDateTitle": "لأي تاريخ تريد التصدير؟",
     "defaultParcelleName": "القطعة {{n}}"
   },
   "dateModal": {

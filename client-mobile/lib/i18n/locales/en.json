@@ -53,6 +53,9 @@
     "viewTable": "View table",
     "history": "History",
     "workDate": "Work date",
+    "exportAll": "⬇ Export all plots (Excel)",
+    "exporting": "Exporting...",
+    "exportDateTitle": "Which date to export?",
     "defaultParcelleName": "Plot {{n}}"
   },
   "dateModal": {

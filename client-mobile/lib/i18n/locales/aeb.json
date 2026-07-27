@@ -53,6 +53,9 @@
     "viewTable": "شوف الجدول",
     "history": "التاريخ",
     "workDate": "تاريخ الخدمة",
+    "exportAll": "⬇ صدّر كل القطع (Excel)",
+    "exporting": "قاعد يصدّر...",
+    "exportDateTitle": "لأي تاريخ تحب تصدّر؟",
     "defaultParcelleName": "القطعة {{n}}"
   },
   "dateModal": {

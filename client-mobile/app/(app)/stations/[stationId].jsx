@@ -6,6 +6,7 @@ import { api } from "../../../lib/api";
 import { confirmAsync } from "../../../lib/confirm";
 import DatePickerModal from "../../../components/DatePickerModal";
 import { todayISO, formatDisplayDate } from "../../../lib/date";
+import { exportStationToXlsx } from "../../../lib/exportXlsx";
 
 export default function StationDetail() {
   const { t, i18n } = useTranslation();
@@ -25,6 +26,11 @@ export default function StationDetail() {
   // its card, defaulting to today. "Commencer le travail" uses it directly.
   const [dates, setDates] = useState({});
   const [editingDateFor, setEditingDateFor] = useState(null);
+
+  // Station-wide export: one workbook, one sheet per parcelle, all for the
+  // same chosen date.
+  const [showExportDate, setShowExportDate] = useState(false);
+  const [exporting, setExporting] = useState(false);
 
   const load = useCallback(() => {
     setLoading(true);
@@ -84,6 +90,27 @@ export default function StationDetail() {
     load();
   }
 
+  async function handleExportStation(date) {
+    setShowExportDate(false);
+    setExporting(true);
+    setError("");
+    try {
+      const results = await Promise.all(
+        parcelles.map((p) => api.get(`/parcelles/${p.id}`, { params: { date } }))
+      );
+      await exportStationToXlsx({
+        stationName: station.name,
+        date,
+        parcelles: parcelles.map((p, i) => ({ name: p.name, lignes: results[i].data.lignes })),
+        columns: [t("table.colLigne"), t("table.colNumero"), t("table.colValeur")],
+      });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setExporting(false);
+    }
+  }
+
   if (loading) return <Text className="p-6 text-slate-400">{t("app.loading")}</Text>;
   if (!station)
     return <Text className="p-6 text-red-600">{error || t("stationDetail.notFound")}</Text>;
@@ -94,6 +121,18 @@ export default function StationDetail() {
         <Text className="text-sm text-brand-700">{t("stationDetail.backToStations")}</Text>
       </Pressable>
       <Text className="mb-4 text-xl font-bold text-slate-800">{station.name}</Text>
+
+      {parcelles.length > 0 && (
+        <Pressable
+          onPress={() => setShowExportDate(true)}
+          disabled={exporting}
+          className="mb-4 rounded-md bg-slate-800 px-4 py-2.5 disabled:opacity-60"
+        >
+          <Text className="text-center font-medium text-white">
+            {exporting ? t("stationDetail.exporting") : t("stationDetail.exportAll")}
+          </Text>
+        </Pressable>
+      )}
 
       {!showAdd && (
         <Pressable onPress={startAdd} className="mb-6 rounded-md bg-brand-700 px-4 py-2.5">
@@ -213,6 +252,13 @@ export default function StationDetail() {
           setDates((prev) => ({ ...prev, [editingDateFor]: date }));
           setEditingDateFor(null);
         }}
+      />
+
+      <DatePickerModal
+        visible={showExportDate}
+        title={t("stationDetail.exportDateTitle")}
+        onCancel={() => setShowExportDate(false)}
+        onConfirm={handleExportStation}
       />
     </ScrollView>
   );
